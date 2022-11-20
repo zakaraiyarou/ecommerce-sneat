@@ -1,0 +1,29 @@
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 1em;
+  height: 100%;
+}
+
+.applicant {
+  max-width: fit-content;
+  background-color: var(--bs-white);
+  padding: 2.6em 2em;
+
+  &__inputs {
+    display: flex;
+    gap: 10px;
+  }
+
+}
+
+.applicant__inputs--diff-type > * {
+  width: 100%;
+}
+
+.applicant input,
+.applicant select {
+  flex-basis: 100%;
+}
