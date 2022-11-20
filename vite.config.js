@@ -1,7 +1,6 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
+import { defineConfig, normalizePath } from 'vite';
+import laravel, { refreshPaths } from 'laravel-vite-plugin';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-import { normalizePath } from 'vite';
 import path from 'path';
 
 export default defineConfig({
@@ -26,9 +25,11 @@ export default defineConfig({
                 'resources/assets/vendor/libs/apex-charts/apex-charts.scss',
                 'resources/assets/vendor/libs/apex-charts/apexcharts.js',
                 'resources/assets/js/dashboards-analytics.js'
-
             ],
-            refresh: true,
+            refresh: [
+                ...refreshPaths,
+                'app/Http/Livewire/**',
+            ],
         }),
         viteStaticCopy({
             targets: [

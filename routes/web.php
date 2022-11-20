@@ -26,7 +26,7 @@ Route::get('/recruitment', [RecruiterController::class, 'recruitment'])->name('r
 Route::get('/notes', [RecruiterController::class, 'notes'])->name('notes');
 Route::get('/posting', [RecruiterController::class, 'posting'])->name('posting');
 Route::get('/schedule', [RecruiterController::class, 'schedule'])->name('schedule');
-Route::get('/register', [RecruiterController::class, 'register'])->name('register');
+// Route::get('/register', [RecruiterController::class, 'register'])->name('register');
 Route::get('/recognitions', [RecruiterController::class, 'recognitions'])->name('recognitions');
 
 // Applicant Page
@@ -92,3 +92,13 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 
 // tables
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
