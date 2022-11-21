@@ -24,7 +24,8 @@ export default defineConfig({
                 'resources/assets/js/config.js',
                 'resources/assets/vendor/libs/apex-charts/apex-charts.scss',
                 'resources/assets/vendor/libs/apex-charts/apexcharts.js',
-                'resources/assets/js/dashboards-analytics.js'
+                'resources/assets/js/dashboards-analytics.js',
+                'resources/assets/vendor/scss/pages/page-auth.scss'
             ],
             refresh: [
                 ...refreshPaths,

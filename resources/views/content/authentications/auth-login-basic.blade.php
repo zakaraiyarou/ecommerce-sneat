@@ -4,7 +4,20 @@
 
 @section('page-style')
 <!-- Page -->
+
 <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}">
+     | |
+     | |
+    -----
+    \   /
+     \ /
+This is located at resources folder after doing this remove the link on the top ^
+@vite('resources/assets/vendor/scss/pages/page-auth.scss')
+
+After this open the terminal Ctrl + J and type:
+  - npm run dev (this will work when vite is running)
+  - npm run build (this will work without vite running)
+
 @endsection
 
 @section('content')
