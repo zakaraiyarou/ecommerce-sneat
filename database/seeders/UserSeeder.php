@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'name' => 'logistics admin',
             'email' => 'log_admin@example.com',
             'email_verified_at' => now(),
+            'is_employee' => true,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
             'name' => 'logistics manager',
             'email' => 'log_manager@example.com',
             'email_verified_at' => now(),
+            'is_employee' => true,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
@@ -36,6 +38,7 @@ class UserSeeder extends Seeder
             'name' => 'logistics staff',
             'email' => 'log_staff@example.com',
             'email_verified_at' => now(),
+            'is_employee' => true,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
@@ -44,6 +47,7 @@ class UserSeeder extends Seeder
             'name' => 'project manager',
             'email' => 'project_manager@example.com',
             'email_verified_at' => now(),
+            'is_employee' => true,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
@@ -52,6 +56,7 @@ class UserSeeder extends Seeder
             'name' => 'project staff',
             'email' => 'project_staff@example.com',
             'email_verified_at' => now(),
+            'is_employee' => true,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);

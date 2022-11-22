@@ -1,5 +1,6 @@
 @extends('layouts/commonMaster' )
-
+{{-- TODO: notes only using content navbar make a way to modify the menubar ty --}}
+{{-- FIXME: Dont edit this edit the main template first but be careful --- this is the back up   --}}
 @php
 /* Display elements */
 $contentNavbar = true;

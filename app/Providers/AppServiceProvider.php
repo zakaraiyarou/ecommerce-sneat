@@ -23,10 +23,19 @@ class AppServiceProvider extends ServiceProvider
    */
   public function boot()
   {
-    $verticalMenuJson = file_get_contents(base_path('resources/menu/verticalMenu.json'));
-    $verticalMenuData = json_decode($verticalMenuJson);
+    $path = base_path('resources/menu/');
+    $files = scandir($path);
+    foreach ($files as $verticalMenu) {
+        if ($verticalMenu == '.' || $verticalMenu == '..')
+            continue;
+        else {
 
-    // Share all menuData to all the views
-    \View::share('menuData', [$verticalMenuData]);
+            $verticalMenuJson = file_get_contents(base_path('resources/menu/' . $verticalMenu));
+            $verticalMenuData = json_decode($verticalMenuJson);
+            // Share all menuData to all the views
+            $verticalMenu = str_replace(".json", "" , $verticalMenu);
+            \View::share($verticalMenu, [$verticalMenuData]);
+        }
+    }
   }
 }

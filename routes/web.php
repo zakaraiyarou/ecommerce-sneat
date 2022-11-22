@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Applicant\ApplicantController;
 use App\Http\Controllers\icons\Boxicons;
+use App\Http\Controllers\Redirect\userController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Analytics;
 use App\Http\Controllers\RecruiterController;
@@ -17,23 +18,45 @@ use App\Http\Controllers\RecruiterController;
 |
 */
 
+//employee routes
+Route::domain('employee.' . env('SESSION_DOMAIN'))
+    ->middleware([
+        'auth:sanctum',
+        config('jetstream.auth_session'),
+        'verified'
+    ])
+    ->group(function () {
+        require_once "employee-routes/logistics.php";
+    });
 
+//core routes
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])
+    ->domain('www.' . env('SESSION_DOMAIN'))
+    ->group(function () {
+        Route::get(
+            '/dashboard',
+            function () {
+                    return view('dashboard');
+                }
+        )->name('dashboard');
+
+    });
+
+//redirecting routes
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/redirect/user', [userController::class, 'index'])->name('redirect-user');
+    Route::get('/', function () {
+        return redirect()->route('redirect-user');
+    }
+    );
+});
 
-    // include('web-routes/hr-routes.php');
-
-})->domain('www.'.env('SESSION_DOMAIN'));
-
-// Route::domain('employee.'.env('APP_URL'))->group(function () {
-//     Route::get('/yeah', function () {
-//         //
-//         return 'yeah boui';
-//     });
-// });
+//public routes
