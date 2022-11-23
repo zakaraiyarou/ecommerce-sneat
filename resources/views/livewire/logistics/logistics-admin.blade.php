@@ -17,6 +17,9 @@ $navbarDetached = 'navbar-detached';
 /* Content classes */
 $container = ($container ?? 'container-xxl');
 
+//TODO: set your menudata
+$menudata = $logisticsMenu[0];
+
 @endphp
 
 @section('layoutContent')

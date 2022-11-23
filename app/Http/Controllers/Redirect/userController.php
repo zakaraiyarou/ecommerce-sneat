@@ -49,11 +49,11 @@ class userController extends Controller
                 //     break;
 
                 case 'buyer':
-                    return redirect()->route('logistics-admin');
+                    $destination = 'project-management';
                     break;
 
                 case 'seller':
-                    # code...
+                    $destination = 'project-management';
                     break;
 
                 default:
