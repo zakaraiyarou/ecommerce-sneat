@@ -38,7 +38,7 @@ class userController extends Controller
                     break;
 
                 default:
-                    'no Role';
+                    $destination = 'no Role';
                     break;
             }
 
@@ -57,7 +57,7 @@ class userController extends Controller
                     break;
 
                 default:
-                    'no Role';
+                    $destination = 'no Role';
                     break;
             }
         }
