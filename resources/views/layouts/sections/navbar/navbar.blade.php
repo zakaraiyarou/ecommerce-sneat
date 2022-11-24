@@ -79,7 +79,7 @@ $navbarDetached = ($navbarDetached ?? '');
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                {{-- TODO: i will go to the profile page of the currebt user --}}
+                {{-- TODO: i will go to the settings/profile page of the currebt user --}}
                 <a class="dropdown-item" href="javascript:void(0);">
                   <i class="bx bx-user me-2"></i>
                   <span class="align-middle">My Profile</span>

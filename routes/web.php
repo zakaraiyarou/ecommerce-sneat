@@ -52,11 +52,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/redirect/user', [userController::class, 'index'])->name('redirect-user');
     Route::get('/', function () {
         return redirect()->route('redirect-user');
-    }
-    );
+    });
+    Route::get('/redirect/user', [userController::class, 'index'])->name('redirect-user');
+    Route::prefix('/settings')->group(function () {
+        Route::resource('/user', UserController::class);
+    });
+    Route::get('/settings/profile', [userController::class, 'index'])->name('redirect-user');
 });
 
 //public routes

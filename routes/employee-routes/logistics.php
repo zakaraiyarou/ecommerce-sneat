@@ -8,17 +8,13 @@ Route::prefix('/logistics-admin')->group(function () {
 
 });
 Route::prefix('/logistics')->group(function () {
-    Route::get(
-        '/dashboard',
-        function ($id) {
+    Route::get('/dashboard', function ($id) {
 
         }
     );
 });
 Route::prefix('/project-management')->group(function () {
-Route::get(
-    '/dashboard',
-    function ($id) {
+Route::get('/dashboard',function ($id) {
 
     }
 );
