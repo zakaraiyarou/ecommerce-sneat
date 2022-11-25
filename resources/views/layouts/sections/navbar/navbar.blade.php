@@ -45,16 +45,12 @@ $navbarDetached = ($navbarDetached ?? '');
         <!-- /Search -->
         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-          <!-- Place this tag where you want the button to render. -->
-          <li class="nav-item lh-1 me-3">
-            <a class="github-button" href="https://github.com/themeselection/sneat-html-laravel-admin-template-free" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themeselection/sneat-html-laravel-admin-template-free on GitHub">Star</a>
-          </li>
-
           <!-- User -->
           <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-              <div class="avatar avatar-online">
-                <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle">
+                {{-- TODO: make the avatar to be responsive to the uploaded picture use jetstrean capability --}}
+                <div class="avatar avatar-online">
+                <img src="{{ Auth::user()->profile_photo_url }}" alt class="w-px-40 h-auto rounded-circle">
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -63,12 +59,13 @@ $navbarDetached = ($navbarDetached ?? '');
                   <div class="d-flex">
                     <div class="flex-shrink-0 me-3">
                       <div class="avatar avatar-online">
-                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle">
+                        <img src="{{ Auth::user()->profile_photo_url }}" alt="" class="w-px-40 h-auto rounded-circle">
                       </div>
                     </div>
                     <div class="flex-grow-1">
-                      <span class="fw-semibold d-block">John Doe</span>
-                      <small class="text-muted">Admin</small>
+                        {{-- TODO: make the name and position dynamic to the database value --}}
+                      <span class="fw-semibold d-block">{{ ucwords(Auth::user()->name) }}</span>
+                      <small class="text-muted">{{  Str::ucfirst(Str::replace('-', ' ', Auth::user()->roles->pluck('name')[0] ?? ''))  }}</small>
                     </div>
                   </div>
                 </a>
@@ -77,18 +74,21 @@ $navbarDetached = ($navbarDetached ?? '');
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="javascript:void(0);">
+                {{-- TODO: i will go to the settings/profile page of the currebt user --}}
+                <a class="dropdown-item" href="{{ url('/') }}">
                   <i class="bx bx-user me-2"></i>
                   <span class="align-middle">My Profile</span>
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="javascript:void(0);">
+                {{-- TODO: if there is setting oage update the href --}}
+                <a class="dropdown-item" href="{{route('settings')}}">
                   <i class='bx bx-cog me-2'></i>
                   <span class="align-middle">Settings</span>
                 </a>
               </li>
               <li>
+                {{-- TODO: if there is no applicable only to core --}}
                 <a class="dropdown-item" href="javascript:void(0);">
                   <span class="d-flex align-items-center align-middle">
                     <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
@@ -101,10 +101,14 @@ $navbarDetached = ($navbarDetached ?? '');
                 <div class="dropdown-divider"></div>
               </li>
               <li>
-                <a class="dropdown-item" href="{{ url('auth/login-basic') }}">
+                {{-- TODO: update the route of the logout --}}
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class='bx bx-power-off me-2'></i>
                   <span class="align-middle">Log Out</span>
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
               </li>
             </ul>
           </li>

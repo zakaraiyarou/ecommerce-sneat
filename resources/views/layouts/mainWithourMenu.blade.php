@@ -1,11 +1,12 @@
 @extends('layouts/commonMaster' )
-
+{{-- TODO: notes only using content navbar make a way to modify the menubar ty --}}
+{{-- FIXME: Dont edit this edit the main template first but be careful --- this is the back up   --}}
 @php
 /* Display elements */
 $contentNavbar = true;
 $containerNav = ($containerNav ?? 'container-xxl');
 $isNavbar = ($isNavbar ?? true);
-$isMenu = ($isMenu ?? true);
+$isMenu = ($isMenu ?? false);
 $isFlex = ($isFlex ?? false);
 $isFooter = ($isFooter ?? true);
 $customizerHidden = ($customizerHidden ?? '');
@@ -15,6 +16,10 @@ $navbarDetached = 'navbar-detached';
 
 /* Content classes */
 $container = ($container ?? 'container-xxl');
+
+//TODO: set your menudata
+// $menudata = $logisticsAdminMenu[0];
+// $menudata = ($menudata ?? '');
 
 @endphp
 
