@@ -1,11 +1,7 @@
 <?php
-
-use App\Http\Controllers\Applicant\ApplicantController;
-use App\Http\Controllers\icons\Boxicons;
 use App\Http\Controllers\Redirect\userController;
+use App\Http\Livewire\Settings\UserInfo;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\Analytics;
-use App\Http\Controllers\RecruiterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +42,7 @@ Route::middleware([
 
     });
 
-//redirecting routes
+//redirecting routes //all user can use this routes as long as they are login
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -57,9 +53,15 @@ Route::middleware([
     });
     Route::get('/redirect/user', [userController::class, 'index'])->name('redirect-user');
     Route::prefix('/settings')->group(function () {
-        Route::resource('/user', UserController::class);
+        Route::resource('/userinfo', UserInfo::class)
+            ->except(['destroy' , 'create']);
+        Route::get('/account', function ($id) {
+
+        });
+        Route::get('/', function () {
+            return redirect()->route('userinfo.show',['userinfo' =>  Auth::user()->id]);
+        })->name('settings');
     });
-    Route::get('/settings/profile', [userController::class, 'index'])->name('redirect-user');
 });
 
 //public routes
