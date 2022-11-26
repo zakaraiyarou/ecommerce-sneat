@@ -1,3 +1,6 @@
+@php
+    $menudata = isset($menudata) ?  $menudata  : $menudata = $verticalMenu[0] ;
+@endphp
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
   <!-- ! Hide app brand if navbar-full -->
@@ -17,7 +20,8 @@
   <div class="menu-inner-shadow"></div>
 
   <ul class="menu-inner py-1">
-    @foreach ($menuData[0]->menu as $menu)
+
+    @foreach ($menudata->menu as $menu)
 
     {{-- adding active and open class if child is active --}}
 

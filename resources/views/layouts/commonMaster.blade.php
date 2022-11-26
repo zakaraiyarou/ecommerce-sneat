@@ -6,14 +6,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>@yield('title') | Sneat - HTML Laravel Free Admin Template </title>
-  <meta name="description" content="{{ config('variables.templateDescription') ? config('variables.templateDescription') : '' }}" />
-  <meta name="keywords" content="{{ config('variables.templateKeyword') ? config('variables.templateKeyword') : '' }}">
+  <title>@yield('title')</title>
   <!-- laravel CRUD token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Canonical SEO -->
   <link rel="canonical" href="{{ config('variables.productPage') ? config('variables.productPage') : '' }}">
   <!-- Favicon -->
+  {{--TODO: make a new icon for the EIS system  --}}
   <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
 
 
@@ -22,6 +21,7 @@
 
   <!-- Include Scripts for customizer, helper, analytics, config -->
   @include('layouts/sections/scriptsIncludes')
+  @livewireStyles
 </head>
 
 <body>
@@ -37,6 +37,10 @@
 
   <!-- Include Scripts -->
   @include('layouts/sections/scripts')
+  @livewireScripts
+  <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+</body>
+
 
 </body>
 
